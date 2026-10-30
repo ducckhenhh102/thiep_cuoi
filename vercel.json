@@ -1,4 +1,9 @@
 {
-  "outputDirectory": "client",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/((?!client/).*)",
+      "destination": "/client/$1"
+    }
+  ]
 }
