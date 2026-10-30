@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Test Click Envelope</title>
+  <style>
+    body { margin: 0; background: #F5E8E9; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: sans-serif; }
+    
+    /* Copy CSS từ layout.css */
+    .envelope-wrapper {
+      position: relative;
+      width: min(92vw, 380px);
+      height: 260px;
+    }
+    .envelope-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #FDF9F5;
+      border-radius: 8px;
+      box-shadow: 0 16px 40px rgba(92,80,80,0.15);
+      border: 1px solid #EEDFD5;
+    }
+    .envelope-flap {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 0;
+      border-left: calc(min(92vw, 380px) / 2) solid transparent;
+      border-right: calc(min(92vw, 380px) / 2) solid transparent;
+      border-top: 130px solid #F5E8E9;
+      transform-origin: top center;
+      z-index: 3;
+    }
+    .envelope-pocket {
+      position: absolute;
+      inset: 0;
+      background: #FDF9F5;
+      clip-path: polygon(0% 0%, 50% 55%, 100% 0%, 100% 100%, 0% 100%);
+      z-index: 2;
+      border-radius: 0 0 8px 8px;
+    }
+    .envelope-letter {
+      position: absolute;
+      top: 15px; left: 5%;
+      width: 90%; height: 220px;
+      background: #FFFFFF;
+      border-radius: 4px;
+      z-index: 1;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .envelope-seal {
+      position: absolute;
+      top: 48%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      cursor: pointer;
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .seal-inner {
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #EBDAC0 0%, #D6B98C 60%, #B07070 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: bold; color: white; font-size: 12px;
+    }
+    .seal-hint { margin-top: 8px; font-size: 12px; color: #5C5050; }
+
+    /* Log overlay */
+    #log { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.85); color: #0f0; font-family: monospace; font-size: 13px; padding: 10px; max-height: 40vh; overflow-y: auto; }
+    .err { color: #f44; } .warn { color: #fa0; }
+  </style>
+</head>
+<body>
+  <div class="envelope-wrapper">
+    <div class="envelope-card" id="card">
+      <div class="envelope-flap" id="flap"></div>
+      <div class="envelope-pocket"></div>
+      <div class="envelope-letter"><p>Minh &amp; Lan</p></div>
+      <button class="envelope-seal" id="btn-open-envelope" type="button">
+        <span class="seal-inner">M&amp;L</span>
+        <span class="seal-hint">Nhấp để mở thiệp</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="log"></div>
+
+  <script>
+    const log = document.getElementById('log');
+    function print(msg, cls = '') {
+      const d = document.createElement('div');
+      d.className = cls;
+      d.textContent = new Date().toLocaleTimeString() + ' ' + msg;
+      log.prepend(d);
+    }
+
+    print('Trang load xong, tìm nút...');
+
+    const btn = document.getElementById('btn-open-envelope');
+    const flap = document.getElementById('flap');
+    const pocket = document.querySelector('.envelope-pocket');
+
+    if (btn) {
+      print('✅ Tìm thấy #btn-open-envelope');
+      
+      // Kiểm tra z-index và vị trí
+      const btnRect = btn.getBoundingClientRect();
+      const flapRect = flap.getBoundingClientRect();
+      print(`Nút vị trí: top=${btnRect.top.toFixed(0)}, left=${btnRect.left.toFixed(0)}, w=${btnRect.width.toFixed(0)}, h=${btnRect.height.toFixed(0)}`);
+      
+      // Kiểm tra element nào thực sự ở trên nút
+      const centerX = btnRect.left + btnRect.width / 2;
+      const centerY = btnRect.top + btnRect.height / 2;
+      const topEl = document.elementFromPoint(centerX, centerY);
+      print(`Element TẠI VỊ TRÍ NÚT: ${topEl?.tagName}.${topEl?.className || topEl?.id}`, topEl?.id === 'btn-open-envelope' ? '' : 'warn');
+
+      btn.addEventListener('click', () => {
+        print('🎉 CLICK THÀNH CÔNG!!! Nút hoạt động.');
+      });
+      btn.addEventListener('pointerdown', () => print('👆 pointerdown detected'));
+    } else {
+      print('❌ KHÔNG tìm thấy #btn-open-envelope', 'err');
+    }
+
+    // Click vào giữa màn hình để test
+    document.addEventListener('click', (e) => {
+      const el = document.elementFromPoint(e.clientX, e.clientY);
+      print(`Click tại (${e.clientX},${e.clientY}) → element: ${el?.tagName}#${el?.id}.${el?.className?.slice?.(0,30)}`);
+    });
+  </script>
+</body>
+</html>

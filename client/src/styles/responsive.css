@@ -1,0 +1,127 @@
+/* responsive.css — Mobile-first & Tối ưu trên mọi màn hình (Chuẩn v3) */
+
+/* ── QUY TẮC BẢO TOÀN (KHÔNG BỊ PHÁ VỠ TRÊN MOBILE) ─────────── */
+
+/* 1. Album ảnh luôn cố định đúng 2 cột trên mọi kích thước màn hình */
+.wedding-gallery__grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+}
+
+/* 2. Đại diện Nhà Trai và Nhà Gái luôn nằm cùng một hàng */
+.family-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: var(--space-3) !important;
+}
+
+/* 3. Hai nút "Gửi lời chúc" và "Gửi quà mừng" co giãn cân đối cùng hàng */
+.wishes-action-row {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: var(--space-3) !important;
+}
+
+/* ── Màn hình rất nhỏ (< 380px) ────────────────────────────── */
+@media (max-width: 380px) {
+  .family-card {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .family-reps-list li {
+    font-size: 0.8rem;
+  }
+
+  .btn--map {
+    font-size: 0.68rem;
+    padding-inline: 4px;
+  }
+
+  .btn--action {
+    font-size: 0.8rem;
+    padding-inline: var(--space-2);
+  }
+
+  .countdown-unit {
+    min-width: 54px;
+    padding: var(--space-2) var(--space-1);
+  }
+
+  .countdown-number {
+    font-size: 1.6rem;
+  }
+
+  .countdown-sep {
+    display: none;
+  }
+}
+
+/* ── Màn hình điện thoại (< 600px) ─────────────────────────── */
+@media (max-width: 600px) {
+  .section {
+    padding-block: var(--space-16);
+  }
+
+  .wish-form {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .gift-modal__dialog {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  /* Trong popup QR, trên điện thoại xếp dọc để ảnh QR đủ lớn */
+  .gift-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gift-card__qr-wrap {
+    width: 210px;
+    height: 210px;
+  }
+}
+
+/* ── Màn hình Tablet & Desktop (>= 768px) ───────────────────── */
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-8);
+  }
+
+  .family-grid {
+    gap: var(--space-8) !important;
+  }
+
+  .family-card {
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .wedding-gallery__grid {
+    gap: 24px !important;
+  }
+
+  .gallery-card__frame {
+    padding: 12px 12px 16px 12px;
+  }
+
+  .gallery-card__caption {
+    font-size: 1.05rem;
+  }
+
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+
+  .gift-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+}
+
+/* ── Màn hình lớn (>= 1024px) ──────────────────────────────── */
+@media (min-width: 1024px) {
+  .section {
+    padding-block: var(--space-24);
+  }
+}

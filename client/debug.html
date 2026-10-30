@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Debug - Thiệp Cưới</title>
+  <style>
+    body { font-family: monospace; padding: 20px; background: #111; color: #0f0; }
+    .ok  { color: #0f0; }
+    .err { color: #f44; }
+    .warn { color: #fa0; }
+    button { padding: 10px 20px; font-size: 16px; margin: 10px 0; cursor: pointer; }
+    #log { white-space: pre-wrap; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>🔧 Debug Console — Thiệp Cưới</h2>
+  <button id="btn-test">Chạy kiểm tra</button>
+  <div id="log"></div>
+
+  <script type="module">
+    const log = document.getElementById('log');
+    const btn = document.getElementById('btn-test');
+
+    function print(msg, type = 'ok') {
+      const line = document.createElement('div');
+      line.className = type;
+      line.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+      log.appendChild(line);
+    }
+
+    btn.addEventListener('click', async () => {
+      log.innerHTML = '';
+      print('=== BẮT ĐẦU KIỂM TRA ===', 'ok');
+
+      // Test 1: Import wedding config
+      try {
+        const mod = await import('./src/config/wedding.js');
+        print('✅ wedding.js load OK — groomName: ' + mod.default.groomName, 'ok');
+      } catch (e) {
+        print('❌ wedding.js FAIL: ' + e.message, 'err');
+        return;
+      }
+
+      // Test 2: Import envelope
+      try {
+        const mod = await import('./src/components/envelope.js');
+        print('✅ envelope.js load OK', 'ok');
+      } catch (e) {
+        print('❌ envelope.js FAIL: ' + e.message, 'err');
+      }
+
+      // Test 3: Import music-player
+      try {
+        const mod = await import('./src/components/music-player.js');
+        print('✅ music-player.js load OK', 'ok');
+      } catch (e) {
+        print('❌ music-player.js FAIL: ' + e.message, 'err');
+      }
+
+      // Test 4: Import countdown
+      try {
+        const mod = await import('./src/components/countdown.js');
+        print('✅ countdown.js load OK', 'ok');
+      } catch (e) {
+        print('❌ countdown.js FAIL: ' + e.message, 'err');
+      }
+
+      // Test 5: Import supabase service
+      try {
+        const mod = await import('./src/services/supabase.js');
+        if (mod.supabase) {
+          print('✅ supabase.js load OK — client created', 'ok');
+        } else {
+          print('⚠️ supabase.js load OK — nhưng client = null (CDN fail hoặc key sai)', 'warn');
+        }
+      } catch (e) {
+        print('❌ supabase.js FAIL: ' + e.message, 'err');
+      }
+
+      // Test 6: Import wishes
+      try {
+        const mod = await import('./src/components/wishes.js');
+        print('✅ wishes.js load OK', 'ok');
+      } catch (e) {
+        print('❌ wishes.js FAIL: ' + e.message, 'err');
+      }
+
+      // Test 7: Import gift-qr
+      try {
+        const mod = await import('./src/components/gift-qr.js');
+        print('✅ gift-qr.js load OK', 'ok');
+      } catch (e) {
+        print('❌ gift-qr.js FAIL: ' + e.message, 'err');
+      }
+
+      // Test 8: Import main.js
+      try {
+        const mod = await import('./src/main.js');
+        print('✅ main.js load OK', 'ok');
+      } catch (e) {
+        print('❌ main.js FAIL: ' + e.message, 'err');
+      }
+
+      // Test 9: Kiểm tra DOM elements
+      print('--- Kiểm tra DOM (main.js chưa chạy trong trang này) ---', 'warn');
+
+      print('=== HOÀN TẤT ===', 'ok');
+    });
+  </script>
+</body>
+</html>

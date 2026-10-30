@@ -1,0 +1,103 @@
+/* variables.css — Biến thiết kế toàn cục (Tone Hồng Phấn Lãng Mạn v4)
+ * Bảng màu: Hồng phấn, hồng đào, trắng sữa, vàng hồng, accent vàng champagne
+ */
+
+:root {
+  /* ── Bảng màu chính (Tone Hồng) ──────────────────────────────── */
+  --color-bg:           #FFFBFC;   /* Nền chính: trắng sữa hồng nhẹ          */
+  --color-surface:      #FFFFFF;   /* Nền card, khối nội dung                */
+  --color-surface-soft: #FFF0F3;   /* Nền card phụ (hồng siêu nhạt)          */
+  --color-blush:        #FFE4EC;   /* Hồng phấn chính - nhấn nhẹ             */
+  --color-blush-lt:     #FFF5F7;   /* Hồng phấn siêu nhạt - nền section      */
+  --color-rose:         #C8637A;   /* Hồng đào đậm - màu chủ đạo             */
+  --color-rose-lt:      #E8899A;   /* Hồng đào nhạt - hover                  */
+  --color-rose-deep:    #A0485F;   /* Hồng đào đậm sâu - text emphasis       */
+  --color-champagne:    #D4AF7A;   /* Vàng champagne - accent sang trọng      */
+  --color-champagne-lt: #EDD9AF;   /* Vàng champagne nhạt                    */
+  --color-sage:         #E8ECE8;   /* Xanh sage nhạt điểm xuyết              */
+
+  --color-text:         #4A2C35;   /* Chữ chính: nâu hồng đậm                */
+  --color-text-muted:   #8B5A6A;   /* Chữ phụ, chú thích, ngày giờ           */
+  --color-border:       #F2CEDB;   /* Đường viền mảnh, tinh tế               */
+  --color-border-soft:  #FAE4EB;   /* Đường viền mờ                          */
+  --color-overlay:      rgba(74, 44, 53, 0.45); /* Overlay ảnh               */
+
+  /* ── Gradient đặc trưng ──────────────────────────────────────── */
+  --grad-gold:          linear-gradient(135deg, #F0DEBA 0%, #D4AF7A 50%, #B89758 100%);
+  --grad-rose:          linear-gradient(135deg, #FFE4EC 0%, #E8899A 50%, #C8637A 100%);
+  --grad-wax:           radial-gradient(circle at 35% 30%, #FADADD 0%, #E8899A 42%, #C8637A 72%, #9B3A5A 100%);
+  --grad-card:          linear-gradient(180deg, #FFFFFF 0%, #FFF8FB 100%);
+  --grad-hero:          linear-gradient(160deg, #FFFBFC 0%, #FFF0F5 50%, #FFE4EC 100%);
+  --grad-section-pink:  linear-gradient(180deg, #FFF5F7 0%, #FFECF2 100%);
+
+  /* ── Hệ thống phông chữ ──────────────────────────────────────── */
+  /* Tiêu đề thanh lịch phong cách editorial */
+  --font-serif:   'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  /* Nội dung tiếng Việt chuẩn xác, thanh thoát */
+  --font-sans:    'Be Vietnam Pro', 'Montserrat', -apple-system, system-ui, sans-serif;
+  /* Chữ viết tay cho điểm nhấn tên cô dâu chú rể */
+  --font-script:  'Great Vibes', 'Dancing Script', cursive;
+
+  /* ── Cỡ chữ fluid ────────────────────────────────────────────── */
+  --text-xs:    0.75rem;   /* 12px */
+  --text-sm:    0.875rem;  /* 14px */
+  --text-base:  1rem;      /* 16px */
+  --text-lg:    1.125rem;  /* 18px */
+  --text-xl:    1.25rem;   /* 20px */
+  --text-2xl:   1.5rem;    /* 24px */
+  --text-3xl:   1.875rem;  /* 30px */
+  --text-4xl:   2.25rem;   /* 36px */
+  --text-5xl:   3rem;      /* 48px */
+  --text-6xl:   3.75rem;   /* 60px */
+
+  /* ── Khoảng cách ──────────────────────────────────────────────── */
+  --space-1:    0.25rem;
+  --space-2:    0.5rem;
+  --space-3:    0.75rem;
+  --space-4:    1rem;
+  --space-5:    1.25rem;
+  --space-6:    1.5rem;
+  --space-8:    2rem;
+  --space-10:   2.5rem;
+  --space-12:   3rem;
+  --space-16:   4rem;
+  --space-20:   5rem;
+  --space-24:   6rem;
+  --space-32:   8rem;
+
+  /* ── Bo góc & Đổ bóng ────────────────────────────────────────── */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-full: 9999px;
+
+  --shadow-sm:  0 2px 8px rgba(200, 99, 122, 0.07);
+  --shadow-md:  0 6px 20px rgba(200, 99, 122, 0.10);
+  --shadow-lg:  0 12px 36px rgba(200, 99, 122, 0.15);
+  --shadow-rose: 0 8px 24px rgba(200, 99, 122, 0.25);
+
+  /* ── Chuyển động ─────────────────────────────────────────────── */
+  --transition-fast:   180ms ease;
+  --transition-normal: 350ms cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-slow:   650ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Tầng hiển thị (z-index) ─────────────────────────────────── */
+  --z-base:    0;
+  --z-above:   10;
+  --z-sticky:  100;
+  --z-modal:   300;
+  --z-toast:   400;
+
+  /* ── Độ rộng khối ───────────────────────────────────────────── */
+  --max-width-content: 900px;
+  --max-width-narrow:  680px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast:   0ms;
+    --transition-normal: 0ms;
+    --transition-slow:   0ms;
+  }
+}

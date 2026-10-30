@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E8E9"/>
+      <stop offset="50%" stop-color="#FFFDFB"/>
+      <stop offset="100%" stop-color="#F0DFCC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#heroGrad)"/>
+  <!-- Circular Frame -->
+  <circle cx="600" cy="400" r="280" fill="#ffffff" opacity="0.6"/>
+  <circle cx="600" cy="400" r="260" fill="none" stroke="#D6B98C" stroke-width="2" stroke-dasharray="6 6"/>
+  <!-- Botanical branch left -->
+  <path d="M420 540 Q380 400 450 300" stroke="#b07070" stroke-width="2" fill="none" opacity="0.5"/>
+  <circle cx="410" cy="420" r="8" fill="#F5E8E9"/>
+  <circle cx="430" cy="350" r="8" fill="#F5E8E9"/>
+  <!-- Botanical branch right -->
+  <path d="M780 540 Q820 400 750 300" stroke="#b07070" stroke-width="2" fill="none" opacity="0.5"/>
+  <circle cx="790" cy="420" r="8" fill="#F5E8E9"/>
+  <circle cx="770" cy="350" r="8" fill="#F5E8E9"/>
+  <!-- Center Heart & Rings -->
+  <circle cx="585" cy="370" r="50" fill="none" stroke="#D6B98C" stroke-width="7"/>
+  <circle cx="615" cy="370" r="50" fill="none" stroke="#b07070" stroke-width="7"/>
+  <!-- Couple Monogram -->
+  <text x="600" y="470" font-family="'Great Vibes', cursive" font-size="64" fill="#5C5050" text-anchor="middle">M &amp; L</text>
+  <text x="600" y="520" font-family="'Be Vietnam Pro', sans-serif" font-size="16" letter-spacing="6" fill="#8C7A7A" text-anchor="middle">SAVE THE DATE &bull; 15.01.2027</text>
+</svg>
