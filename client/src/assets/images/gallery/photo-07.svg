@@ -1,0 +1,12 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800">
+  <defs>
+    <linearGradient id="g07" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE4EC"/>
+      <stop offset="100%" stop-color="#FADADD"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#g07)"/>
+  <circle cx="300" cy="360" r="120" fill="none" stroke="#D4AF7A" stroke-width="2"/>
+  <text x="300" y="375" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" fill="#4A2C35" text-anchor="middle">Minh &amp; Lan</text>
+  <text x="300" y="420" font-family="'Great Vibes', cursive" font-size="34" fill="#C8637A" text-anchor="middle">Khoảnh khắc 07</text>
+</svg>

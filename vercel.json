@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/((?!client/).*)",
+      "destination": "/client/$1"
+    }
+  ]
+}
