@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <rect width="300" height="300" fill="#ffffff" rx="16"/>
+  <!-- Decorative border -->
+  <rect x="12" y="12" width="276" height="276" fill="none" stroke="#D6B98C" stroke-width="2" rx="12"/>
+  <!-- Header Text -->
+  <text x="150" y="45" font-family="'Cormorant Garamond', serif" font-size="20" font-weight="bold" fill="#5C5050" text-anchor="middle">MỪNG CƯỚI NHÀ GÁI</text>
+  <text x="150" y="68" font-family="'Be Vietnam Pro', sans-serif" font-size="12" fill="#8C7A7A" text-anchor="middle">Quét mã VietQR để gửi quà mừng</text>
+  <!-- Stylized QR Grid representation -->
+  <g fill="#5C5050" transform="translate(45, 85)">
+    <!-- Top-left finder -->
+    <rect x="0" y="0" width="60" height="60" fill="none" stroke="#5C5050" stroke-width="8" rx="6"/>
+    <rect x="16" y="16" width="28" height="28" rx="3"/>
+    <!-- Top-right finder -->
+    <rect x="150" y="0" width="60" height="60" fill="none" stroke="#5C5050" stroke-width="8" rx="6"/>
+    <rect x="166" y="16" width="28" height="28" rx="3"/>
+    <!-- Bottom-left finder -->
+    <rect x="0" y="150" width="60" height="60" fill="none" stroke="#5C5050" stroke-width="8" rx="6"/>
+    <rect x="16" y="166" width="28" height="28" rx="3"/>
+    <!-- Random pattern dots for authentic look -->
+    <rect x="80" y="10" width="16" height="16" rx="2"/><rect x="110" y="10" width="20" height="12" rx="2"/>
+    <rect x="80" y="40" width="20" height="16" rx="2"/><rect x="115" y="35" width="16" height="16" rx="2"/>
+    <rect x="10" y="80" width="16" height="20" rx="2"/><rect x="40" y="85" width="20" height="15" rx="2"/>
+    <rect x="80" y="75" width="50" height="50" rx="4" fill="#F5E8E9"/>
+    <!-- Center Heart Icon -->
+    <path d="M105 105 C95 95 90 90 90 84 C90 79 94 75 99 75 C102 75 104 77 105 79 C106 77 108 75 111 75 C116 75 120 79 120 84 C120 90 115 95 105 105 Z" fill="#b07070"/>
+    <rect x="150" y="80" width="20" height="16" rx="2"/><rect x="180" y="75" width="25" height="16" rx="2"/>
+    <rect x="145" y="110" width="30" height="20" rx="2"/><rect x="185" y="105" width="20" height="25" rx="2"/>
+    <rect x="80" y="145" width="16" height="20" rx="2"/><rect x="110" y="140" width="20" height="16" rx="2"/>
+    <rect x="80" y="175" width="30" height="20" rx="2"/><rect x="125" y="170" width="20" height="25" rx="2"/>
+    <rect x="160" y="150" width="20" height="20" rx="2"/><rect x="190" y="165" width="15" height="15" rx="2"/>
+    <rect x="155" y="180" width="25" height="20" rx="2"/>
+  </g>
+</svg>

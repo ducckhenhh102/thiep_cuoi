@@ -1,0 +1,273 @@
+/* animations.css — Hiệu ứng chuyển cảnh & xuất hiện khi cuộn */
+
+/* ════════════════════════════════════════════════════════════════
+   REVEAL KHI CUỘN (IntersectionObserver)
+   ════════════════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Cascade delay cho các phần tử con trong cùng khối */
+.reveal:nth-child(2) { transition-delay: 70ms;  }
+.reveal:nth-child(3) { transition-delay: 140ms; }
+.reveal:nth-child(4) { transition-delay: 210ms; }
+.reveal:nth-child(5) { transition-delay: 280ms; }
+
+/* ════════════════════════════════════════════════════════════════
+   ENVELOPE / MÀN HÌNH MỞ THIỆP
+   ════════════════════════════════════════════════════════════════ */
+
+/* Hiệu ứng xuất hiện ban đầu của envelope */
+@keyframes envelopeFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.envelope-inner {
+  animation: envelopeFadeIn 0.6s ease forwards;
+}
+
+/* Nút "Mở Thiệp" — shimmer effect */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.btn-open-envelope {
+  background: linear-gradient(
+    90deg,
+    var(--color-champagne) 0%,
+    #e8c98a 40%,
+    var(--color-champagne) 60%,
+    var(--color-rose) 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+.btn-open-envelope:hover {
+  animation-play-state: paused;
+  background: var(--color-rose);
+}
+
+/* Fade-out envelope screen */
+.envelope-screen {
+  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+}
+
+.envelope-screen.is-closing {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   HERO ANIMATE-IN (sau khi mở thiệp)
+   ════════════════════════════════════════════════════════════════ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content { opacity: 0; } /* Ẩn mặc định, JS thêm class animate-in */
+
+.hero-content.animate-in {
+  animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Eyebrow & title & date cascade */
+.hero-content.animate-in .hero-eyebrow {
+  animation: fadeInDown 0.6s 0.2s ease forwards;
+  opacity: 0;
+}
+
+.hero-content.animate-in .hero-title {
+  animation: fadeInUp 0.8s 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+.hero-content.animate-in .hero-date {
+  animation: fadeInUp 0.7s 0.55s ease forwards;
+  opacity: 0;
+}
+
+.hero-content.animate-in .hero-tagline {
+  animation: fadeInUp 0.7s 0.7s ease forwards;
+  opacity: 0;
+}
+
+.hero-content.animate-in .hero-scroll-hint {
+  animation: fadeInUp 0.6s 0.9s ease forwards;
+  opacity: 0;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   PARALLAX HERO BG
+   (transform set bởi parallax.js, chỉ dùng will-change để tối ưu)
+   ════════════════════════════════════════════════════════════════ */
+.hero-bg {
+  will-change: transform;
+  /* Scale lên để ảnh không bị hở khi translate */
+  transform: scale(1.1);
+  transform-origin: center center;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   MUSIC PLAYER BUTTON
+   ════════════════════════════════════════════════════════════════ */
+
+/* Pulse khi đang phát */
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0    rgba(212, 175, 122, 0.55); }
+  70%  { box-shadow: 0 0 0 12px rgba(212, 175, 122, 0); }
+  100% { box-shadow: 0 0 0 0    rgba(212, 175, 122, 0); }
+}
+
+.btn-music[aria-pressed="true"] {
+  animation: pulse-ring 2.2s ease infinite;
+}
+
+/* Spin icon khi đang phát */
+@keyframes spin {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+.btn-music[aria-pressed="true"] .music-icon--pause {
+  display: inline-block;
+  animation: spin 4s linear infinite;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   LIGHTBOX — OPEN/CLOSE & SPINNER
+   ════════════════════════════════════════════════════════════════ */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Lightbox image transition khi chuyển ảnh */
+.lightbox-img {
+  transition: opacity var(--transition-normal);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   GALLERY — CROSSFADE & HOVER
+   ════════════════════════════════════════════════════════════════ */
+.gallery-item {
+  transition:
+    transform    var(--transition-normal),
+    box-shadow   var(--transition-normal);
+  overflow: hidden;
+}
+
+.gallery-item:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-lg);
+}
+
+.gallery-item img {
+  transition: transform var(--transition-slow);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   COUNTDOWN — FLIP NUMBER
+   ════════════════════════════════════════════════════════════════ */
+@keyframes flipIn {
+  0%   { transform: translateY(-10px); opacity: 0; }
+  100% { transform: translateY(0);     opacity: 1; }
+}
+
+.countdown-number.flip {
+  animation: flipIn 0.25s ease forwards;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   WISH CARD XUẤT HIỆN
+   ════════════════════════════════════════════════════════════════ */
+@keyframes slideInCard {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wish-card {
+  animation: slideInCard 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   SCROLL INDICATOR BOUNCE
+   ════════════════════════════════════════════════════════════════ */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(10px); }
+}
+
+.hero-scroll-hint {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   PREFERS-REDUCED-MOTION — TẮT TẤT CẢ
+   ════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  /* Reveal: hiện ngay */
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  /* Tắt tất cả animation */
+  .envelope-inner,
+  .btn-open-envelope,
+  .hero-content,
+  .hero-content.animate-in,
+  .hero-content.animate-in .hero-eyebrow,
+  .hero-content.animate-in .hero-title,
+  .hero-content.animate-in .hero-date,
+  .hero-content.animate-in .hero-tagline,
+  .hero-content.animate-in .hero-scroll-hint,
+  .btn-music[aria-pressed="true"],
+  .btn-music[aria-pressed="true"] .music-icon--pause,
+  .wish-card,
+  .countdown-number.flip,
+  .hero-scroll-hint {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Tắt parallax will-change */
+  .hero-bg {
+    will-change: auto;
+    transform: scale(1);
+  }
+
+  .gallery-item,
+  .gallery-item img,
+  .envelope-screen {
+    transition: none;
+  }
+
+  /* Lightbox loader: tắt spin */
+  .lightbox-loader { animation: none; }
+}

@@ -1,0 +1,18 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800">
+  <defs>
+    <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8ECE8"/>
+      <stop offset="100%" stop-color="#E6CCD2"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#grad6)"/>
+  <!-- Decorative border -->
+  <rect x="24" y="24" width="552" height="752" fill="none" stroke="#9E6472" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.6" rx="8"/>
+  <circle cx="300" cy="350" r="140" fill="#ffffff" opacity="0.75"/>
+  <!-- Floral / Ring Icon -->
+  <circle cx="280" cy="335" r="45" fill="none" stroke="#9E6472" stroke-width="6"/>
+  <circle cx="320" cy="335" r="45" fill="none" stroke="#D6B98C" stroke-width="6"/>
+  <path d="M300 420 C270 380 250 360 250 330 C250 300 275 280 300 305 C325 280 350 300 350 330 C350 360 330 380 300 420 Z" fill="#9E6472" opacity="0.8"/>
+  <text x="300" y="550" font-family="'Cormorant Garamond', 'Playfair Display', serif" font-size="28" font-style="italic" fill="#5C5050" text-anchor="middle">Khởi đầu mới ngọt ngào</text>
+  <text x="300" y="590" font-family="'Be Vietnam Pro', sans-serif" font-size="14" letter-spacing="3" fill="#8C7A7A" text-anchor="middle">MINH &amp; LAN &bull; 2027</text>
+</svg>
